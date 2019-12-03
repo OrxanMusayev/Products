@@ -1,0 +1,55 @@
+﻿@model List<ProductAspNetCoreApp.Models.ProductDTO>
+
+@{
+    ViewData["Title"] = "Product List";
+}
+<p>
+    <a class="btn btn-success" asp-action="Create">New Product</a>
+</p>
+<h3>Product List</h3>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Məhsulun adı
+            </th>
+            <th>
+                Kod
+            </th>
+            <th>
+                Qiyməti
+            </th>
+            <th>
+                Kateqoriyası
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCategory.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="home" asp-route-id="@item.Id" class="btn btn-success">Düzəliş et</a>
+                    <a asp-action="Delete" asp-controller="home" asp-route-id="@item.Id" class="btn btn-danger" 
+                       onclick="return confirm('Bu məhsulu silmək istədiyinizdən əminsinizmi?')">Sil</a>
+                </td>
+            </tr>
+        }
+</table>

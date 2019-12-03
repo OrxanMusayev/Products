@@ -1,0 +1,49 @@
+﻿@model ProductAspNetCoreApp.Models.ViewModel
+
+@{
+    ViewBag.Title = "Create Product";
+}
+
+
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-4">
+        <form asp-controller="home" asp-action="create" method="post" class="mt-3">
+            <div asp-validation-summary="All">
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Code" class="control-label"></label>
+                <input asp-for="Product.Code" class="form-control" />
+                <span asp-validation-for="Product.Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input  asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.UserID" class="control-label"></label>
+                <input asp-for="Product.UserID" class="form-control" />
+                <span asp-validation-for="Product.UserID" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Product.ProductCategoryId"></label>
+                <select class="form-control" asp-for="Product.ProductCategoryId" asp-items="Model.ProductCategories">
+                    <option value="">Please select category</option>
+                </select>
+                <span asp-validation-for="Product.ProductCategory.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="List" class="btn btn-light">Back to List</a>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
